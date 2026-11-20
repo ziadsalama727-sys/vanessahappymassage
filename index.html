@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Für Vanessa 💙</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-dark: #090d16;
+    --card-bg: rgba(16, 24, 40, 0.88);
+    --soft-blue: #7dd3fc;
+    --warm-glow: #fde68a;
+    --soft-rose: #f9a8d4;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: #f8fafc;
+    overflow-x: hidden;
+    background: linear-gradient(rgba(5, 8, 17, 0.72), rgba(5, 8, 17, 0.80)),
+                url('https://i.postimg.cc/qvL3pbbW/IMG-20261120-021401-240.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#login { display: flex; }
+
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    padding: 36px 28px;
+    border-radius: 30px;
+    border: 1px solid rgba(125, 211, 252, 0.22);
+    width: 92%;
+    max-width: 400px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+}
+
+input {
+    padding: 15px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    width: 86%;
+    text-align: center;
+    font-size: 17px;
+    margin-bottom: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    outline: none;
+}
+
+input::placeholder { color: #cbd5e1; }
+
+#errorBox {
+    background: rgba(190, 24, 93, 0.85);
+    color: #fff;
+    font-size: 14px;
+    margin: 10px 0 14px;
+    padding: 11px;
+    border-radius: 14px;
+    display: none;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 17px;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #0284c7, #38bdf8);
+    color: #06111d;
+    font-weight: 700;
+    width: 100%;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.28);
+}
+
+button:hover { transform: translateY(-2px); }
+
+.calm-badge {
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(125, 211, 252, 0.35);
+    padding: 10px 22px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: var(--warm-glow);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.avatar-img {
+    width: 88%;
+    max-width: 260px;
+    border-radius: 26px;
+    border: 2px solid rgba(125, 211, 252, 0.35);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+}
+
+#message {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    padding: 26px;
+    border-radius: 26px;
+    margin: 20px 0;
+    font-size: 15.5px;
+    line-height: 1.85;
+    max-width: 94%;
+    width: 540px;
+    text-align: left;
+    direction: ltr;
+    white-space: pre-line;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.comfort-btn {
+    max-width: 300px;
+    background: linear-gradient(45deg, #7dd3fc, #f9a8d4);
+    color: #090d16;
+    margin-top: 8px;
+}
+
+#comfortModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(10, 16, 30, 0.97);
+    backdrop-filter: blur(22px);
+    color: #f8fafc;
+    padding: 30px 24px;
+    border-radius: 28px;
+    width: 86%;
+    max-width: 420px;
+    z-index: 2000;
+    transition: 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+    border: 1px solid rgba(125, 211, 252, 0.45);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+}
+
+#comfortModal.show { transform: translate(-50%, -50%) scale(1); }
+
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+}
+</style>
+</head>
+<body>
+
+<audio id="bgMusic" loop preload="auto">
+    <source src="https://files.catbox.moe/o5l2rg.mp3" type="audio/mpeg">
+</audio>
+
+<div class="page" id="login">
+    <div class="glass-card">
+        <h2 style="font-family:'Playfair Display'; color: var(--soft-blue); margin-top: 0;">Atme kurz durch 🌙</h2>
+        <p style="font-size: 14px; margin-bottom: 20px; color: #cbd5e1;">Gib deinen Namen ein, um einen ruhigen Ort nur für dich zu öffnen:</p>
+        <input type="text" id="username" placeholder="Dein Name...">
+        <div id="errorBox">Bitte gib „Vanessa“ ein, um fortzufahren 💙</div>
+        <button onclick="openSpace()">Öffnen</button>
+    </div>
+</div>
+
+<div class="page" id="main">
+    <div class="calm-badge">✨ Ein kleiner, ruhiger Ort nur für dich ✨</div>
+
+    <h1 style="font-family:'Playfair Display'; color: var(--soft-blue); margin: 6px 0 16px;">Hey Vanessa 💙</h1>
+
+    <img src="https://i.postimg.cc/qvL3pbbW/IMG-20261120-021401-240.jpg" alt="Vanessa" class="avatar-img">
+
+    <div id="message"></div>
+
+    <button class="comfort-btn" onclick="showComfort()">Eine kleine Erinnerung für dich 🌷</button>
+</div>
+
+<div id="comfortModal">
+    <h3 style="color: var(--warm-glow); font-family:'Playfair Display'; font-size: 22px; margin-top: 0;">Dein Lächeln fehlt ✨💙</h3>
+    <p style="line-height: 1.75; font-size: 15px; text-align: left; direction: ltr; color: #e2e8f0;">
+        Du musst heute nicht alles Schwere auf einmal tragen. Gönn dir Ruhe, atme tief durch und geh alles Schritt für Schritt an.<br><br>
+        Und vergiss nicht: Dein Lächeln ist viel zu schön, um es vor der Welt zu verstecken. Ich hoffe, es kommt ganz bald zurück. 🤍😊
+    </p>
+    <button onclick="closeComfort()" style="margin-top: 12px;">Sanft schließen 🌿</button>
+</div>
+
+<script>
+const audio = document.getElementById("bgMusic");
+
+function openSpace() {
+    const val = document.getElementById("username").value.trim().toLowerCase();
+    if (val === "vanessa") {
+        audio.play().catch(() => {});
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "flex";
+        typeCalmMessage();
+        setInterval(createSoftSparkle, 650);
+    } else {
+        document.getElementById("errorBox").style.display = "block";
+    }
+}
+
+const calmText = `Hey Vanessa... Ich weiß, dass sich manches manchmal schwer und anstrengend anfühlt. 🌸
+
+Lehn dich für einen kleinen Moment zurück, hör der ruhigen Musik zu und lass deine Gedanken kurz zur Ruhe kommen.
+
+Ich möchte dein Lächeln sehen – ich weiß, dass es wunderschön ist, und genau deshalb versteckst du es wahrscheinlich. Ich habe noch kein einziges Foto gesehen, auf dem du lächelst, aber ich möchte dieses schönste Lachen sehen, das du den Menschen vorenthältst. 😊✨
+
+Schwere Tage bleiben nicht für immer, und du verdienst Frieden, Wärme und unzählige Momente, die dich wieder zum Strahlen bringen. Pass gut auf dich auf. 🌙💙`;
+
+function typeCalmMessage() {
+    let i = 0;
+    const box = document.getElementById("message");
+    box.innerHTML = "";
+    function step() {
+        if (i < calmText.length) {
+            box.innerHTML += calmText.charAt(i);
+            i++;
+            setTimeout(step, 40);
+        }
+    }
+    step();
+}
+
+function createSoftSparkle() {
+    const el = document.createElement("div");
+    el.innerHTML = ["🌙", "✨", "💙", "🌿"][Math.floor(Math.random() * 4)];
+    el.className = "sparkle";
+    el.style.top = "-24px";
+    el.style.left = (Math.random() * 95) + "vw";
+    el.style.fontSize = "20px";
+    el.style.opacity = "0.55";
+    el.style.transition = "7s linear";
+    document.body.appendChild(el);
+
+    setTimeout(() => {
+        el.style.transform = "translateY(108vh)";
+        setTimeout(() => el.remove(), 7000);
+    }, 80);
+}
+
+function showComfort() {
+    document.getElementById("comfortModal").classList.add("show");
+}
+
+function closeComfort() {
+    document.getElementById("comfortModal").classList.remove("show");
+}
+</script>
+</body>
+</html>
